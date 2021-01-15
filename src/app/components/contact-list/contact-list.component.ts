@@ -1,8 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 
 import { Contact } from "src/app/models/contact";
 import { ContactService } from "../../services/contact.service";
 import { ContactComponent } from "../contact/contact.component";
+
+import { take } from "rxjs/operators";
 
 @Component({
   selector: "app-contact-list",
@@ -14,29 +16,31 @@ export class ContactListComponent implements OnInit {
 
   constructor(private contactService: ContactService) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.fetchContacts();
   }
 
   fetchContacts() {
-    this.contactService.fetchContacts().subscribe((value) => {
-      console.log(value);
-      this.contacts = value;
-    });
+    this.contactService
+      .fetchContacts()
+      .pipe(take(1))
+      .subscribe((value) => {
+        this.contacts = value;
+      });
   }
 
   // probably just add an empty contact which is editable
   add() {
-    console.log('add');
+    console.log("add");
   }
 
   // maybe just id not full contact
   save(contact: Contact) {
-    console.log('save');
+    console.log("save");
   }
 
   // maybe just id not full contact
   delete(contact: Contact) {
-    console.log('delete');
+    console.log("delete");
   }
 }
