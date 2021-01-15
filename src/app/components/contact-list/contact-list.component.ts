@@ -51,13 +51,31 @@ export class ContactListComponent implements OnInit {
       );
   }
 
-  // maybe just id not full contact
   save(contact: Contact) {
-    console.log("save");
+    this.contactService
+      .save(contact)
+      .pipe(take(1))
+      .subscribe(
+        (value) => {
+          this.fetchContacts();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
-  // maybe just id not full contact
   delete(contact: Contact) {
-    console.log("delete");
+    this.contactService
+      .delete(contact)
+      .pipe(take(1))
+      .subscribe(
+        (value) => {
+          this.fetchContacts();
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 }
