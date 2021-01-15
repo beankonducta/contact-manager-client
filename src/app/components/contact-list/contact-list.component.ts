@@ -14,12 +14,17 @@ import { take } from "rxjs/operators";
 export class ContactListComponent implements OnInit {
   contacts: Contact[];
 
-  constructor(private contactService: ContactService) {}
+  constructor(private contactService: ContactService) {
+  }
 
   ngOnInit() {
     this.fetchContacts();
   }
 
+  /*
+  TODO: This is laggy on client, I think we need to compare our local list to the 
+  servers and make only necessary changes.
+  */
   fetchContacts() {
     this.contactService
       .fetchContacts()
@@ -29,7 +34,6 @@ export class ContactListComponent implements OnInit {
       });
   }
 
-  // successfully adds empty contact with random(ish) id
   add() {
     this.contactService
       .add({

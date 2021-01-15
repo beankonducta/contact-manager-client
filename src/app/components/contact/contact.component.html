@@ -2,24 +2,54 @@
   <div>
     <mat-form-field appearance="outline">
       <mat-label *ngIf="contact.editing">Full Name</mat-label>
-      <input matInput [(ngModel)]="contact.name" [disabled]="!contact.editing"/>
+      <input
+        matInput
+        [(ngModel)]="contact.name"
+        [disabled]="!contact.editing"
+      />
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label *ngIf="contact.editing">Address</mat-label>
-      <input matInput [(ngModel)]="contact.address" [disabled]="!contact.editing"/>
+      <input
+        matInput
+        [(ngModel)]="contact.address"
+        [disabled]="!contact.editing"
+      />
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label *ngIf="contact.editing">Email</mat-label>
-      <input matInput [(ngModel)]="contact.email" [disabled]="!contact.editing"/>
+      <input
+        matInput
+        [(ngModel)]="contact.email"
+        [disabled]="!contact.editing"
+      />
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label *ngIf="contact.editing">Phone Number</mat-label>
-      <input matInput [(ngModel)]="contact.phone" [disabled]="!contact.editing"/>
+      <input
+        matInput
+        [(ngModel)]="contact.phone"
+        [disabled]="!contact.editing"
+      />
     </mat-form-field>
     <button *ngIf="!contact.editing" mat-stroked-button (click)="edit()">
-        <mat-icon>edit</mat-icon>
+      <mat-icon>edit</mat-icon>
     </button>
-    <button *ngIf="contact.editing" mat-stroked-button (click)="save()">Save</button>
-    <button *ngIf="contact.editing" mat-stroked-button color="warn" (click)="delete()">Delete</button>
+    <button
+      *ngIf="contact.editing"
+      mat-stroked-button
+      (click)="save()"
+      [disabled]="!valid"
+    >
+      Save
+    </button>
+    <button
+      *ngIf="contact.editing"
+      mat-stroked-button
+      color="warn"
+      (click)="delete()"
+    >
+      Delete
+    </button>
   </div>
 </mat-card>

@@ -15,6 +15,17 @@ export class ContactComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  // TODO: I should make this a reactive form with real validators, or at least have visual feedback if input is invalid
+  get valid() {
+    if (!this.contact) return false;
+    return (
+      this.contact.name.length > 5 &&
+      this.contact.email.length > 5 &&
+      this.contact.address.length > 5 &&
+      this.contact.phone.length > 5
+    );
+  }
+
   save() {
     this.contact.editing = false;
     this.onSave.emit(this.contact);
