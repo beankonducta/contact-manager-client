@@ -4,13 +4,14 @@
     <div *ngFor="let contact of contacts; let i = index">
       <app-contact
         [contact]="contact"
+        [canEdit]="canEditOrAdd"
         (onSave)="save($event)"
         (onDelete)="delete($event)"
       >
       </app-contact>
     </div>
   </div>
-  <button mat-stroked-button color="accent" (click)="add()" [disabled]="adding">
+  <button mat-stroked-button color="accent" (click)="add()" [disabled]="!canEditOrAdd">
     Add new Contact
   </button>
 </mat-card>

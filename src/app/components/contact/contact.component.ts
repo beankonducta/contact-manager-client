@@ -8,6 +8,7 @@ import { Contact } from "src/app/models/contact";
 })
 export class ContactComponent implements OnInit {
   @Input() contact: Contact;
+  @Input() canEdit: boolean;
   @Output() onSave: EventEmitter<Contact> = new EventEmitter<Contact>();
   @Output() onDelete: EventEmitter<Contact> = new EventEmitter<Contact>();
 

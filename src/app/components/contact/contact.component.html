@@ -32,7 +32,7 @@
         [disabled]="!contact.editing"
       />
     </mat-form-field>
-    <button *ngIf="!contact.editing" mat-stroked-button (click)="edit()">
+    <button *ngIf="!contact.editing && canEdit" mat-stroked-button (click)="edit()">
       <mat-icon>edit</mat-icon>
     </button>
     <button

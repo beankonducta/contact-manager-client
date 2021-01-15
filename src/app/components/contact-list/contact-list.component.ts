@@ -24,6 +24,14 @@ export class ContactListComponent implements OnInit {
     this.fetchContacts();
   }
 
+  get canEditOrAdd() {
+    if (!this.contacts) return true;
+    for (let c of this.contacts) {
+      if (c.editing) return false;
+    }
+    return true;
+  }
+
   /*
   TODO: This is laggy on client, I think we need to compare our local list to the 
   servers and make only necessary changes.
