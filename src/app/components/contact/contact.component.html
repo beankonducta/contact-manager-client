@@ -1,4 +1,4 @@
-<mat-card class="contact" *ngIf="contact">
+<mat-card class="contact" [class.editing]="contact.editing" *ngIf="contact">
   <div>
     <mat-form-field appearance="outline">
       <mat-label *ngIf="contact.editing">Full Name</mat-label>
