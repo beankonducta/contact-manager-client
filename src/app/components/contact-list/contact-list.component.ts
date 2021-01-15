@@ -10,18 +10,20 @@ import { ContactComponent } from "../contact/contact.component";
   styleUrls: ["./contact-list.component.css"],
 })
 export class ContactListComponent implements OnInit {
-  contacts: Contact[] = [{
-    name: "",
-    address: "",
-    phone: "",
-    email: "",
-    id: Math.round(Math.random() * 500),
-    editing: true,
-  }];
+  contacts: Contact[];
 
   constructor(private contactService: ContactService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.fetchContacts();
+  }
+
+  fetchContacts() {
+    this.contactService.fetchContacts().subscribe((value) => {
+      console.log(value);
+      this.contacts = value;
+    });
+  }
 
   // probably just add an empty contact which is editable
   add() {
