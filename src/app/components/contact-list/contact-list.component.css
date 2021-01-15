@@ -1,0 +1,15 @@
+#contact-card {
+    height: 95%;
+    overflow: hidden;
+    background: rgb(75, 75, 75);
+}
+
+#contact-list {
+    height: 90%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#contact-title {
+    margin-bottom: 1%;
+}

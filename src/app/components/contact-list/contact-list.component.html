@@ -1,9 +1,16 @@
-<div *ngFor="let contact of contacts; let i = index">
-  <app-contact
-    [contact]="contact"
-    (onSave)="save($event)"
-    (onDelete)="delete($event)"
-  >
-  </app-contact>
-</div>
-<button (click)="add()">Add new Contact</button>
+<mat-card id="contact-card">
+  <mat-card-title id="contact-title">Contact Master 3000</mat-card-title>
+  <div id="contact-list">
+    <div *ngFor="let contact of contacts; let i = index">
+      <app-contact
+        [contact]="contact"
+        (onSave)="save($event)"
+        (onDelete)="delete($event)"
+      >
+      </app-contact>
+    </div>
+  </div>
+  <button mat-stroked-button color="accent" (click)="add()">
+    Add new Contact
+  </button>
+</mat-card>

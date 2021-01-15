@@ -7,5 +7,4 @@ import { ContactListComponent } from "./components/contact-list/contact-list.com
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent {
-  title = "Super Rad Contact Manager 3000";
 }

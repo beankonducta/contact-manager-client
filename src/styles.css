@@ -2,3 +2,35 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-stroked-button { 
+    /* bad practice important works for now */
+    margin-top: 10px!important;
+    margin-left: 10px!important;
+}
+
+.mat-form-field {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+/* SCROLLBAR STYLES */
+
+::-webkit-scrollbar {
+    width: 20px;
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-track {
+    border: 1px solid rgb(95, 95, 95);
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(20, 20, 20); 
+    border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(30, 30, 30);
+}
