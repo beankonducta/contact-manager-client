@@ -10,7 +10,7 @@
       </app-contact>
     </div>
   </div>
-  <button mat-stroked-button color="accent" (click)="add()">
+  <button mat-stroked-button color="accent" (click)="add()" [disabled]="adding">
     Add new Contact
   </button>
 </mat-card>

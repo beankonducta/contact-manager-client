@@ -14,7 +14,10 @@ import { take } from "rxjs/operators";
 export class ContactListComponent implements OnInit {
   contacts: Contact[];
 
+  adding: boolean;
+
   constructor(private contactService: ContactService) {
+    this.adding = false;
   }
 
   ngOnInit() {
@@ -35,6 +38,7 @@ export class ContactListComponent implements OnInit {
   }
 
   add() {
+    this.adding = true;
     this.contactService
       .add({
         name: "",
@@ -56,6 +60,7 @@ export class ContactListComponent implements OnInit {
   }
 
   save(contact: Contact) {
+    this.adding = false;
     this.contactService
       .save(contact)
       .pipe(take(1))
@@ -70,6 +75,7 @@ export class ContactListComponent implements OnInit {
   }
 
   delete(contact: Contact) {
+    this.adding = false;
     this.contactService
       .delete(contact)
       .pipe(take(1))
