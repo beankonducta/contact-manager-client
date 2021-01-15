@@ -1,9 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
+import { Contact } from "../models/contact";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ContactService {
+  constructor() {}
 
-  constructor() { }
+  add(contact: Contact) {}
+
+  save(contact: Contact) {}
+
+  delete(contact: Contact) {}
 }

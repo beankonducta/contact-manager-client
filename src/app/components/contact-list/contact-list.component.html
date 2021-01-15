@@ -1,3 +1,9 @@
 <div *ngFor="let contact of contacts; let i = index">
-  <app-contact [contact]="contact"> </app-contact>
+  <app-contact
+    [contact]="contact"
+    (onSave)="save($event)"
+    (onDelete)="delete($event)"
+  >
+  </app-contact>
 </div>
+<button (click)="add()">Add new Contact</button>
