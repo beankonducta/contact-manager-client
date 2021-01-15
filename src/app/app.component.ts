@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ContactListComponent } from './components/contact-list/contact-list.component';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'contact-manager-client';
+  title = 'Super Rad Contact Manager 3000';
 }
