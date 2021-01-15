@@ -1,22 +1,23 @@
-<div *ngIf="contact">
-  <div *ngIf="!contact.editing">
-    <h1>CONTACT!</h1>
-    <h1>{{ contact.name }}</h1>
-    <h1>{{ contact.address }}</h1>
-    <h1>{{ contact.email }}</h1>
-    <h1>{{ contact.phone }}</h1>
-    <h1>{{ contact.id }}</h1>
-    <button (click)="edit()">Edit</button>
-    <button (click)="delete()">Delete</button>
+<mat-card *ngIf="contact">
+  <div>
+    <mat-form-field appearance="outline">
+      <mat-label *ngIf="contact.editing">Full Name</mat-label>
+      <input matInput [(ngModel)]="contact.name" placeholder="Full Name" [disabled]="!contact.editing"/>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label *ngIf="contact.editing">Address</mat-label>
+      <input matInput [(ngModel)]="contact.address" [disabled]="!contact.editing"/>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label *ngIf="contact.editing">Email</mat-label>
+      <input matInput [(ngModel)]="contact.email" [disabled]="!contact.editing"/>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label *ngIf="contact.editing">Phone Number</mat-label>
+      <input matInput [(ngModel)]="contact.phone" [disabled]="!contact.editing"/>
+    </mat-form-field>
+    <button *ngIf="!contact.editing" mat-stroked-button (click)="edit()">Edit</button>
+    <button *ngIf="contact.editing" mat-stroked-button (click)="save()">Save</button>
+    <button *ngIf="contact.editing" mat-stroked-button (click)="delete()">Delete</button>
   </div>
-
-  <div *ngIf="contact.editing">
-    <h1>Edit / add contact</h1>
-    <input [(ngModel)]="contact.name" />
-    <input [(ngModel)]="contact.address" />
-    <input [(ngModel)]="contact.email" />
-    <input [(ngModel)]="contact.phone" />
-    <button (click)="save()">Save</button>
-    <button (click)="delete()">Delete</button>
-  </div>
-</div>
+</mat-card>
