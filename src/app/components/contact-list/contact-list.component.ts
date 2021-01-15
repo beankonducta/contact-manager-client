@@ -29,9 +29,26 @@ export class ContactListComponent implements OnInit {
       });
   }
 
-  // probably just add an empty contact which is editable
+  // successfully adds empty contact with random(ish) id
   add() {
-    console.log("add");
+    this.contactService
+      .add({
+        name: "",
+        address: "",
+        phone: "",
+        email: "",
+        id: Math.round(Math.random() * 500000),
+        editing: true,
+      })
+      .pipe(take(1))
+      .subscribe(
+        (value) => {
+          this.fetchContacts();
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
   }
 
   // maybe just id not full contact
