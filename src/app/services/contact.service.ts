@@ -1,15 +1,34 @@
 import { Injectable } from "@angular/core";
 import { Contact } from "../models/contact";
 
+import { HttpClient } from "@angular/common/http";
+
+import { Observable } from "rxjs";
+
 @Injectable({
   providedIn: "root",
 })
 export class ContactService {
-  constructor() {}
+  private apiUrl = "http://localhost:3000";
 
-  add(contact: Contact) {}
+  constructor(private http: HttpClient) {}
 
-  save(contact: Contact) {}
+  fetchContacts(): Observable<Contact[]> {
+    return this.http.get<Contact[]>(`${this.apiUrl}/contacts`);
+  }
 
-  delete(contact: Contact) {}
+  add(contact: Contact): Observable<any> {
+    return this.http.post<Contact>(`${this.apiUrl}/contacts`, contact);
+  }
+
+  save(contact: Contact): Observable<any> {
+    return this.http.put<Contact>(
+      `${this.apiUrl}/contacts/${contact.id}`, 
+      contact
+    );
+  }
+
+  delete(contact: Contact) {
+    return this.http.delete<Contact>(`${this.apiUrl}/contacts/${contact.id}`);
+  }
 }
