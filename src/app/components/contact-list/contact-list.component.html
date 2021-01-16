@@ -19,7 +19,7 @@
       <mat-radio-button value="desc">Descending</mat-radio-button>
     </mat-radio-group>
   </mat-card>
-  <div id="contact-list">
+  <div id="contact-list" #scrollMe [scrollTop]="scrollMe.scrollHeight">
     <mat-card *ngIf="contacts.length === 0">
       <h3>No contacts found, please add one!</h3>
     </mat-card>

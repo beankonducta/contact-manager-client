@@ -15,7 +15,7 @@ import { animate, style, transition, trigger } from "@angular/animations";
     trigger("fadeIn", [
       transition(":enter", [
         style({ opacity: "0" }),
-        animate(".2s ease-in", style({ opacity: "1" })),
+        animate(".3s ease-in", style({ opacity: "1" })),
       ]),
     ]),
   ],

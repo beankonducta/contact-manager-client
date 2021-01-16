@@ -1,11 +1,11 @@
 #contact-card {
-    height: 96%;
+    height: 98vh;
     overflow: hidden;
     background: rgb(75, 75, 75);
 }
 
 #contact-list {
-    max-height: 90%;
+    max-height: 70vh;
     overflow-x: hidden;
     overflow-y: auto;
 }
