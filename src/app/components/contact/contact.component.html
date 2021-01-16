@@ -1,7 +1,7 @@
 <mat-card class="contact" [class.editing]="contact.editing" *ngIf="contact">
   <div>
     <mat-form-field appearance="outline">
-      <mat-label *ngIf="contact.editing">Full Name</mat-label>
+      <mat-label>Full Name</mat-label>
       <input
         matInput
         [(ngModel)]="contact.name"
@@ -9,7 +9,7 @@
       />
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label *ngIf="contact.editing">Address</mat-label>
+      <mat-label>Address</mat-label>
       <input
         matInput
         [(ngModel)]="contact.address"
@@ -17,7 +17,7 @@
       />
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label *ngIf="contact.editing">Email</mat-label>
+      <mat-label>Email</mat-label>
       <input
         matInput
         [(ngModel)]="contact.email"
@@ -25,7 +25,7 @@
       />
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label *ngIf="contact.editing">Phone Number</mat-label>
+      <mat-label>Phone Number</mat-label>
       <input
         matInput
         [(ngModel)]="contact.phone"

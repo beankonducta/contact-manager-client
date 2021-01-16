@@ -16,6 +16,11 @@ body {
     margin-left: 10px !important;
 }
 
+.mat-radio-button {
+    /* bad practice important works for now */
+    margin-left: 10px !important;
+}
+
 .mat-form-field {
     margin-top: 10px;
     margin-left: 10px;

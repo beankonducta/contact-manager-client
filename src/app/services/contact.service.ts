@@ -13,8 +13,8 @@ export class ContactService {
 
   constructor(private http: HttpClient) {}
 
-  fetchContacts(): Observable<Contact[]> {
-    return this.http.get<Contact[]>(`${this.apiUrl}/contacts`);
+  fetchContacts(sortType: String, sortOrder: String): Observable<Contact[]> {
+    return this.http.get<Contact[]>(`${this.apiUrl}/contacts/${sortType}/${sortOrder}`);
   }
 
   add(contact: Contact): Observable<any> {

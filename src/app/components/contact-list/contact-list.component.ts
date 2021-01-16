@@ -22,10 +22,21 @@ import { animate, style, transition, trigger } from "@angular/animations";
 })
 export class ContactListComponent implements OnInit {
   contacts: Contact[];
+  sortType: String;
+  sortOrder: String;
 
-  constructor(private contactService: ContactService) {}
+  constructor(private contactService: ContactService) {
+    this.sortType = 'name';
+    this.sortOrder = 'desc';
+  }
 
   ngOnInit() {
+    this.fetchContacts();
+  }
+
+  changed(variable, val) {
+    if(variable === 'sortOrder') this.sortOrder = val.value;
+    if(variable === 'sortType') this.sortType = val.value;
     this.fetchContacts();
   }
 
@@ -43,7 +54,7 @@ export class ContactListComponent implements OnInit {
   */
   fetchContacts() {
     this.contactService
-      .fetchContacts()
+      .fetchContacts(this.sortType, this.sortOrder)
       .pipe(take(1))
       .subscribe((value) => {
         this.contacts = value;

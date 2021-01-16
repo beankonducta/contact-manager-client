@@ -9,6 +9,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
+import { MatRadioModule } from "@angular/material/radio";
 
 import { AppComponent } from "./app.component";
 import { ContactComponent } from "./components/contact/contact.component";
@@ -27,6 +28,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
+    MatRadioModule,
     ReactiveFormsModule
   ],
   providers: [],
