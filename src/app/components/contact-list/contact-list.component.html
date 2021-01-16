@@ -1,7 +1,7 @@
 <mat-card id="contact-card">
   <mat-card-title id="contact-title">Contact Master 3000</mat-card-title>
   <div id="contact-list">
-    <div *ngFor="let contact of contacts; let i = index">
+    <div *ngFor="let contact of contacts; let i = index" @fadeIn>
       <app-contact
         [contact]="contact"
         [canEdit]="canEditOrAdd"

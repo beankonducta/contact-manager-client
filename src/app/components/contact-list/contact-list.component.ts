@@ -5,11 +5,20 @@ import { ContactService } from "../../services/contact.service";
 import { ContactComponent } from "../contact/contact.component";
 
 import { take } from "rxjs/operators";
+import { animate, style, transition, trigger } from "@angular/animations";
 
 @Component({
   selector: "app-contact-list",
   templateUrl: "./contact-list.component.html",
   styleUrls: ["./contact-list.component.css"],
+  animations: [
+    trigger("fadeIn", [
+      transition(":enter", [
+        style({ opacity: "0" }),
+        animate(".2s ease-in", style({ opacity: "1" })),
+      ]),
+    ]),
+  ],
 })
 export class ContactListComponent implements OnInit {
   contacts: Contact[];
