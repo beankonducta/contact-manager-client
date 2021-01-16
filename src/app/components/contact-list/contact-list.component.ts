@@ -25,10 +25,12 @@ export class ContactListComponent implements OnInit {
   sortType: String;
   sortOrder: String;
 
+  lastSortOrder: String;
+  lastSortType: String;
+
   constructor(private contactService: ContactService) {
-    this.sortType = "name";
-    this.sortOrder = "desc";
     this.contacts = [];
+    this.resetSort();
   }
 
   ngOnInit() {
@@ -39,6 +41,18 @@ export class ContactListComponent implements OnInit {
     if (variable === "sortOrder") this.sortOrder = val.value;
     if (variable === "sortType") this.sortType = val.value;
     this.fetchContacts();
+  }
+
+  resetSort() {
+    this.sortType = this.lastSortType || "name";
+    this.sortOrder = this.lastSortOrder || "desc";
+  }
+
+  newItemSort() {
+    this.lastSortType = this.sortType;
+    this.lastSortOrder = this.sortOrder;
+    this.sortType = "name";
+    this.sortOrder ="desc";
   }
 
   get canEditOrAdd() {
@@ -72,6 +86,7 @@ export class ContactListComponent implements OnInit {
       .pipe(take(1))
       .subscribe(
         (value) => {
+          this.newItemSort();
           this.fetchContacts();
         },
         (error) => {
@@ -86,6 +101,7 @@ export class ContactListComponent implements OnInit {
       .pipe(take(1))
       .subscribe(
         (value) => {
+          this.resetSort();
           this.fetchContacts();
         },
         (error) => {
