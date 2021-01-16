@@ -2,7 +2,11 @@
   <mat-card-title id="contact-title">Contact Master 3000</mat-card-title>
   <mat-card>
     Sort By:
-    <mat-radio-group (change)="changed('sortType', $event)" [value]="sortType">
+    <mat-radio-group
+      (change)="changed('sortType', $event)"
+      [value]="sortType"
+      [disabled]="!canEditOrAdd"
+    >
       <mat-radio-button value="name">Name</mat-radio-button>
       <mat-radio-button value="address">Address</mat-radio-button>
       <mat-radio-button value="email">Email</mat-radio-button>
@@ -14,6 +18,7 @@
     <mat-radio-group
       (change)="changed('sortOrder', $event)"
       [value]="sortOrder"
+      [disabled]="!canEditOrAdd"
     >
       <mat-radio-button value="asc">Ascending</mat-radio-button>
       <mat-radio-button value="desc">Descending</mat-radio-button>
