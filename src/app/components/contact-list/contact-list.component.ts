@@ -26,8 +26,9 @@ export class ContactListComponent implements OnInit {
   sortOrder: String;
 
   constructor(private contactService: ContactService) {
-    this.sortType = 'name';
-    this.sortOrder = 'desc';
+    this.sortType = "name";
+    this.sortOrder = "desc";
+    this.contacts = [];
   }
 
   ngOnInit() {
@@ -35,8 +36,8 @@ export class ContactListComponent implements OnInit {
   }
 
   changed(variable, val) {
-    if(variable === 'sortOrder') this.sortOrder = val.value;
-    if(variable === 'sortType') this.sortType = val.value;
+    if (variable === "sortOrder") this.sortOrder = val.value;
+    if (variable === "sortType") this.sortType = val.value;
     this.fetchContacts();
   }
 
@@ -48,16 +49,13 @@ export class ContactListComponent implements OnInit {
     return true;
   }
 
-  /*
-  TODO: This is laggy on client, I think we need to compare our local list to the 
-  servers and make only necessary changes.
-  */
   fetchContacts() {
     this.contactService
       .fetchContacts(this.sortType, this.sortOrder)
       .pipe(take(1))
       .subscribe((value) => {
-        this.contacts = value;
+        if (JSON.stringify(this.contacts) !== JSON.stringify(value))
+          this.contacts = value;
       });
   }
 

@@ -20,6 +20,9 @@
     </mat-radio-group>
   </mat-card>
   <div id="contact-list">
+    <mat-card *ngIf="contacts.length === 0">
+      <h3>No contacts found, please add one!</h3>
+    </mat-card>
     <div *ngFor="let contact of contacts; let i = index" @fadeIn>
       <app-contact
         [contact]="contact"
