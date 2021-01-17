@@ -40,8 +40,7 @@ export class ContactListComponent implements OnInit {
   }
 
   changed(variable, val) {
-    if (variable === "sortOrder") this.sortOrder = val.value;
-    if (variable === "sortType") this.sortType = val.value;
+    this[variable] = val.value;
     this.fetchContacts();
   }
 
