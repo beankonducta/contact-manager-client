@@ -1,6 +1,6 @@
 <mat-card class="contact" [class.editing]="contact.editing" *ngIf="contact">
   <div>
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" [color]="nameValid ? 'accent' : 'warn'">
       <mat-label>Full Name</mat-label>
       <input
         matInput
@@ -8,7 +8,7 @@
         [disabled]="!contact.editing"
       />
     </mat-form-field>
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" [color]="addressValid ? 'accent' : 'warn'">
       <mat-label>Address</mat-label>
       <input
         matInput
@@ -16,7 +16,7 @@
         [disabled]="!contact.editing"
       />
     </mat-form-field>
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" [color]="emailValid ? 'accent' : 'warn'">
       <mat-label>Email</mat-label>
       <input
         matInput
@@ -24,13 +24,14 @@
         [disabled]="!contact.editing"
       />
     </mat-form-field>
-    <mat-form-field appearance="outline">
+    <mat-form-field appearance="outline" [color]="phoneValid ? 'accent' : 'warn'">
       <mat-label>Phone Number</mat-label>
       <input
         matInput
         [(ngModel)]="contact.phone"
         [disabled]="!contact.editing"
       />
+      <mat-error> HELP</mat-error>
     </mat-form-field>
     <button *ngIf="!contact.editing" mat-stroked-button (click)="edit()" [disabled]="!canEdit">
       <mat-icon>edit</mat-icon>

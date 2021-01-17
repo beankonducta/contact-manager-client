@@ -12,19 +12,35 @@ export class ContactComponent implements OnInit {
   @Output() onSave: EventEmitter<Contact> = new EventEmitter<Contact>();
   @Output() onDelete: EventEmitter<Contact> = new EventEmitter<Contact>();
 
-  constructor() {}
+  constructor() {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  // TODO: I should make this a reactive form with real validators, or at least have visual feedback if input is invalid
   get valid() {
     if (!this.contact) return false;
-    return (
-      this.contact.name.length > 5 &&
-      this.contact.email.length > 5 &&
-      this.contact.address.length > 5 &&
-      this.contact.phone.length > 5
-    );
+    if (!this.nameValid || !this.addressValid || !this.emailValid || !this.phoneValid) return false;
+    return true;
+  }
+
+  get nameValid() {
+    if(!this.contact.name) return false;
+    return this.contact.name.length > 4;
+  }
+
+  get addressValid() {
+    if(!this.contact.address) return false;
+    return this.contact.address.length > 5;
+  }
+
+  get emailValid() {
+    if(!this.contact.email) return false;
+    return this.contact.email.match(/^\S+@\S+\.\S+$/);
+  }
+
+  get phoneValid() {
+    if(!this.contact.phone) return false;
+    return this.contact.phone.match(/\d/g) && this.contact.phone.length >= 10;
   }
 
   save() {
