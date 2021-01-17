@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from "@angular/core";
 
 import { Contact } from "src/app/models/contact";
 import { ContactService } from "../../services/contact.service";
@@ -21,6 +21,8 @@ import { animate, style, transition, trigger } from "@angular/animations";
   ],
 })
 export class ContactListComponent implements OnInit {
+  @ViewChild('scroller') scroller: ElementRef;
+
   contacts: Contact[];
   sortType: String;
   sortOrder: String;
@@ -52,7 +54,7 @@ export class ContactListComponent implements OnInit {
     this.lastSortType = this.sortType;
     this.lastSortOrder = this.sortOrder;
     this.sortType = "name";
-    this.sortOrder ="desc";
+    this.sortOrder = "desc";
   }
 
   get canEditOrAdd() {
@@ -63,13 +65,23 @@ export class ContactListComponent implements OnInit {
     return true;
   }
 
+  scrollToBottom() {
+    try {
+      setTimeout(() => {
+        this.scroller.nativeElement.scrollTop = this.scroller.nativeElement.scrollHeight;
+      })
+    } catch (error) { }
+  }
+
   fetchContacts() {
     this.contactService
       .fetchContacts(this.sortType, this.sortOrder)
       .pipe(take(1))
       .subscribe((value) => {
-        if (JSON.stringify(this.contacts) !== JSON.stringify(value))
+        if (JSON.stringify(this.contacts) !== JSON.stringify(value)) {
           this.contacts = value;
+          this.scrollToBottom();
+        }
       });
   }
 
