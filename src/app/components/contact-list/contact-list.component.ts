@@ -91,7 +91,6 @@ export class ContactListComponent implements OnInit {
         address: "",
         phone: "",
         email: "",
-        id: Math.round(Math.random() * 500000),
         editing: true,
       })
       .pipe(take(1))

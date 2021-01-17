@@ -23,12 +23,12 @@ export class ContactService {
 
   save(contact: Contact): Observable<any> {
     return this.http.put<Contact>(
-      `${this.apiUrl}/contacts/${contact.id}`, 
+      `${this.apiUrl}/contacts/${contact._id}`, 
       contact
     );
   }
 
   delete(contact: Contact) {
-    return this.http.delete<Contact>(`${this.apiUrl}/contacts/${contact.id}`);
+    return this.http.delete<Contact>(`${this.apiUrl}/contacts/${contact._id}`);
   }
 }

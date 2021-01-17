@@ -3,6 +3,6 @@ export interface Contact {
     address: String;
     email: String;
     phone: String;
-    id: any;
     editing?: boolean;
+    _id?: any;
 }
