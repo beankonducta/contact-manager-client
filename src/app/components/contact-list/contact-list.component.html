@@ -25,8 +25,14 @@
     </mat-radio-group>
   </mat-card>
   <div id="contact-list" #scroller>
-    <mat-card *ngIf="contacts.length === 0">
+    <mat-card *ngIf="contacts.length === 0 && !fetching && !errored">
       <h3>No contacts found, please add one!</h3>
+    </mat-card>
+    <mat-card *ngIf="errored">
+      <h3>Api request failed.</h3>
+    </mat-card>
+    <mat-card *ngIf="fetching">
+      <h3>Fetching contacts, please wait...</h3>
     </mat-card>
     <div *ngFor="let contact of contacts; let i = index" @fadeIn>
       <app-contact

@@ -30,8 +30,12 @@ export class ContactListComponent implements OnInit {
   lastSortOrder: String;
   lastSortType: String;
 
+  errored: boolean;
+  fetching: boolean;
+
   constructor(private contactService: ContactService) {
     this.contacts = [];
+    this.errored = false;
     this.resetSort();
   }
 
@@ -73,15 +77,24 @@ export class ContactListComponent implements OnInit {
   }
 
   fetchContacts() {
+    this.errored = false;
+    this.fetching = true;
     this.contactService
       .fetchContacts(this.sortType, this.sortOrder)
       .pipe(take(1))
       .subscribe((value) => {
         if (JSON.stringify(this.contacts) !== JSON.stringify(value)) {
           this.contacts = value;
+          this.fetching = false;
           this.scrollToBottom();
         }
-      });
+      },
+        (error) => {
+          this.errored = true;
+          this.fetching = false;
+          console.error(error);
+        }
+      );
   }
 
   add() {
