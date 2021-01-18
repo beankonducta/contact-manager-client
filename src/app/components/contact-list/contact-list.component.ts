@@ -68,6 +68,10 @@ export class ContactListComponent implements OnInit {
     return true;
   }
 
+  get mobile() {
+    return window.innerWidth < 800;
+  }
+
   scrollToBottom() {
     try {
       setTimeout(() => {

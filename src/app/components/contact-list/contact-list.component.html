@@ -2,11 +2,7 @@
   <mat-card-title id="contact-title">Contact Master 3000</mat-card-title>
   <mat-card>
     Sort By:
-    <mat-radio-group
-      (change)="changed('sortType', $event)"
-      [value]="sortType"
-      [disabled]="!canEditOrAdd"
-    >
+    <mat-radio-group (change)="changed('sortType', $event)" [value]="sortType" [disabled]="!canEditOrAdd">
       <mat-radio-button value="name">Name</mat-radio-button>
       <mat-radio-button value="address">Address</mat-radio-button>
       <mat-radio-button value="email">Email</mat-radio-button>
@@ -15,16 +11,15 @@
   </mat-card>
   <mat-card>
     Sort Order:
-    <mat-radio-group
-      (change)="changed('sortOrder', $event)"
-      [value]="sortOrder"
-      [disabled]="!canEditOrAdd"
-    >
+    <mat-radio-group (change)="changed('sortOrder', $event)" [value]="sortOrder" [disabled]="!canEditOrAdd">
       <mat-radio-button value="asc">Ascending</mat-radio-button>
       <mat-radio-button value="desc">Descending</mat-radio-button>
     </mat-radio-group>
   </mat-card>
-  <div id="contact-list" #scroller>
+  <button *ngIf="mobile" id="mobile-add-button" mat-stroked-button color="accent" (click)="add()" [disabled]="!canEditOrAdd">
+    Add new Contact
+  </button>
+  <div [id]="mobile? 'contact-list-short' : 'contact-list'" #scroller>
     <mat-card *ngIf="contacts.length === 0 && !fetching && !errored">
       <h3>No contacts found, please add one!</h3>
     </mat-card>
@@ -35,21 +30,11 @@
       <h3>Fetching contacts, please wait...</h3>
     </mat-card>
     <div *ngFor="let contact of contacts; let i = index" @fadeIn>
-      <app-contact
-        [contact]="contact"
-        [canEdit]="canEditOrAdd"
-        (onSave)="save($event)"
-        (onDelete)="delete($event)"
-      >
+      <app-contact [contact]="contact" [canEdit]="canEditOrAdd" (onSave)="save($event)" (onDelete)="delete($event)">
       </app-contact>
     </div>
   </div>
-  <button
-    mat-stroked-button
-    color="accent"
-    (click)="add()"
-    [disabled]="!canEditOrAdd"
-  >
+  <button *ngIf="!mobile" mat-stroked-button color="accent" (click)="add()" [disabled]="!canEditOrAdd">
     Add new Contact
   </button>
 </mat-card>

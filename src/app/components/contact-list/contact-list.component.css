@@ -4,12 +4,23 @@
     background: rgb(75, 75, 75);
 }
 
+
 #contact-list {
     max-height: 70vh;
     overflow-x: hidden;
     overflow-y: auto;
 }
 
+#contact-list-short {
+    max-height: 58vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#mobile-add-button {
+    margin-bottom: 10px;
+}
+
 #contact-title {
-    margin-bottom: 1%;
+    margin-bottom: calc(1% + 10px);
 }
